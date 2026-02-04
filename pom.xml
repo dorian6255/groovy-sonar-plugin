@@ -15,7 +15,7 @@
     <sonar.apiVersion>10.11.0.2468</sonar.apiVersion>
     <sonar.testingHarnessVersion>10.7.0.96327</sonar.testingHarnessVersion>
     <jdk.min.version>17</jdk.min.version>
-    <sonar.sources>src/main/java,src/main/js</sonar.sources>
+    <sonar.sources>src/main/java</sonar.sources>
   </properties>
 
   <dependencies>
@@ -67,46 +67,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <release>21</release>
+          <release>17</release>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.github.eirslett</groupId>
-        <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.12.1</version>
-        <executions>
-          <execution>
-            <phase>generate-resources</phase>
-            <id>install node and yarn</id>
-            <goals>
-              <goal>install-node-and-yarn</goal>
-            </goals>
-            <configuration>
-              <nodeVersion>v20.18.0</nodeVersion>
-              <!-- yarn 1.x is needed as a bootstrap, then it will use the version in the .yarnrc.yml -->
-              <yarnVersion>v1.22.5</yarnVersion>
-            </configuration>
-          </execution>
-          <execution>
-            <id>yarn install</id>
-            <goals>
-              <goal>yarn</goal>
-            </goals>
-            <configuration>
-              <arguments>install</arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <phase>generate-resources</phase>
-            <id>yarn run script</id>
-            <goals>
-              <goal>yarn</goal>
-            </goals>
-            <configuration>
-              <arguments>run build</arguments>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
